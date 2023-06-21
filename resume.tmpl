@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>{{.basics.name}} - {{.basics.label}}</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+  <style>
+  {{template "styles.css.tmpl"}}
+  </style>
+  
+  </head>
+  <body>
+  
+  <div id="resume">
+    {{template "basics.tmpl" .basics}}
+    {{template "skills.tmpl" .skills}}
+    {{template "work.tmpl" .work}}
+    {{template "projects.tmpl" .projects}}
+    {{template "volunteer.tmpl" .volunteer}}
+    {{template "education.tmpl" .education}}
+    {{template "awards.tmpl" .awards}}
+    {{template "certificates.tmpl" .certificates}}
+    {{template "publications.tmpl" .publications}}
+    {{template "languages.tmpl" .languages}}
+    {{template "interests.tmpl" .interests}}
+    {{template "references.tmpl" .references}}
+  </body>
+</html>

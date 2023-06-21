@@ -1,0 +1,30 @@
+{{if .}}
+<section class="section">
+  <header>
+    <h2 class='section-title'>Languages</h2>
+  </header>
+  <section id="languages">
+    {{range .}}
+    <div class="display">
+      {{if .language}}
+      <h3 class="language">
+        {{.language}}
+      </h3>
+      {{end}}
+      <div class="item">
+        {{if .fluency}}
+        <div class="level fluency {{toLowerCase .fluency}}">
+          {{if .fluencyDisplay}}
+          <em>{{.fluencyDisplay}}</em>
+          {{else}}
+          <em>{{.fluency}}</em>
+          {{end}}
+          <div class="bar"></div>
+        </div>
+        {{end}}
+      </div>
+    </div>
+    {{end}}
+  </section>
+</section>
+{{end}}

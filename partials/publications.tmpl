@@ -1,0 +1,58 @@
+{{if .}}
+<section class="section">
+  <header>
+    <h2 class='section-title'>Publications</h2>
+  </header>
+  <section id="publications">
+    {{range .}}
+    <section class="publication-item">
+      {{if .summary}}
+      <!-- todo index -->
+      <label for="publication-item-1"></label>
+      {{end}}
+
+      <header class="clear">
+         {{if .releaseDate}}
+        <span class="date">
+          {{toDayMonthYear .releaseDate}}
+        </span>
+        {{end}}
+        <div class="header-left">
+          {{if .name}}
+          <span class="name">
+            {{if .website}}
+            <span class="website">
+              <span class="fas fa-external-link-alt"></span>
+              <a target="_blank" href="{{.website}}">{{.name}}</a>
+            </span>
+            {{else}}
+            {{.name}}
+            {{end}}
+          </span>
+          {{end}}
+          {{if .publisher}}
+          <span class="publisher">
+            in {{.publisher}}
+          </span>
+          {{end}}
+        </div>
+       
+      </header>
+      {{if .keywords}}
+      <ul class="keywords">
+        {{range .keywords}}
+        <li>{{.}}</li>
+        {{end}}
+      </ul>
+      {{end}}
+
+      <div class="item">
+        {{if .summary}}
+        <div class="summary">{{paragraphSplit .summary}}</div>
+        {{end}}
+      </div>
+    </section>
+    {{end}}
+  </section>
+</section>
+{{end}}

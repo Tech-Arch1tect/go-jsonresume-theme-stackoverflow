@@ -1,41 +1,41 @@
-{{#if resume.certificates.length}}
+{{if .}}
   <section class="section">
     <header>
       <h2 class="section-title">Certificates</h2>
     </header>
     <section id="certificates">
-      {{#each resume.certificates}}
+      {{range .}}
         <section class="certificate-item">
           <header class="clear">
-            {{#if date}}
+            {{if .date}}
               <div class="date">
-                {{date}}
+                {{.date}}
               </div>
-            {{/if}}
+            {{end}}
             <div class="header-left">
-              {{#if name}}
+              {{if .name}}
                 <div class="name">
-                  {{name}}
+                  {{.name}}
                 </div>
-              {{/if}}
-              {{#if issuer}}
+              {{end}}
+              {{if .issuer}}
                 <div class="issuer">
-                  {{issuer}}
+                  {{.issuer}}
                 </div>
-              {{/if}}
+              {{end}}
             </div>
           </header>
 
           <div class="item">
-            {{#if url}}
+            {{if .url}}
               <span class="url">
                 <span class="fas fa-external-link-alt"></span>
-                <a target="_blank" href="{{url}}">{{url}}</a>
+                <a target="_blank" href="{{.url}}">{{.url}}</a>
               </span>
-            {{/if}}
+            {{end}}
           </div>
         </section>
-      {{/each}}
+      {{end}}
     </section>
   </section>
-{{/if}}
+{{end}}

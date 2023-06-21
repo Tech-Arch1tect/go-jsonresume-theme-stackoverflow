@@ -1,0 +1,87 @@
+{{if .}}
+<section class="section">
+  <header>
+    <h2 class='section-title'>Education <span class="item-count">({{(len .)}})</span></h2>
+  </header>
+
+  <section id="education">
+    {{range .}}
+    <section class="education-item">
+      {{if .summary}}
+      <!-- todo index -->
+        <label for="education-item-1"></label>
+      {{end}}
+      <header class="clear">
+        <div class="date">
+          {{if .startDate}}
+          <span class="startDate">
+          {{toYear .startDate}}
+          </span>
+          {{end}}
+          {{if .endDate}}
+          <span class="endDate">
+          - {{toYear .endDate}}
+          </span>
+          {{else}}
+          <span class="endDate">
+          - Current
+          </span>
+          {{end}}
+        </div>
+        <div class="header-left">
+          {{if .studyType}}
+          <div class="studyType">
+            {{.studyType}}
+          </div>
+          {{end}}
+          {{if .area}}
+          <div class="area">
+            {{.area}}
+          </div>
+          {{end}}
+          {{if .institution}}
+          <div class="institution">
+            {{.institution}}
+          </div>
+          {{end}}
+        </div>
+      </header>
+
+      {{if .location}}
+      <span class="location">
+        <span class="fas fa-map-marker-alt"></span>
+        {{if .location.city}}
+        <span class="city">{{.location.city}}</span>
+        {{end}}
+        {{if .location.countryCode}}
+        <span class="countryCode">({{.location.countryCode}})</span>
+        {{end}}
+        {{if .location.region}}
+        <span class="region">{{.location.region}}</span>
+        {{end}}
+      </span>
+      {{end}}
+
+      {{if .courses}}
+      <ul class="courses">
+        {{range .courses}}
+        <li>{{.}}</li>
+        {{end}}
+      </ul>
+      {{end}}
+
+      <div class="item">
+        {{if .gpa}}
+        <div class='gpa'>
+          <strong> Grade:</strong> <span>{{.gpa}}</span>
+        </div>
+        {{end}}
+        {{if .summary}}
+          <div class="summary">{{paragraphSplit .summary}}</div>
+        {{end}}
+      </div>
+    </section>
+    {{end}}
+  </section>
+</section>
+{{end}}

@@ -1,94 +1,95 @@
-{{#if resume.volunteer.length}}
+{{if .}}
 <section class="section">
   <header>
     <h2 class='section-title'>Volunteer</h2>
   </header>
   <section id="volunteer">
-    {{#each resume.volunteer}}
+    {{range .}}
     <section class="volunteer-item">
-      {{#if organization}}
+      {{if .organization}}
 
-      {{#if summary}}
-      <label for="volunteer-item-{{@index}}"></label>
-      {{/if}}
+      {{if .summary}}
+      <!-- todo index -->
+      <label for="volunteer-item-1"></label>
+      {{end}}
 
       <header class="clear">
          <div class="date">
-          {{#if startDate}}
+          {{if .startDate}}
           <span class="startDate">
-            {{MY startDate}}
+            {{toMonthYear .startDate}}
           </span>
-          {{/if}}
-          {{#if endDate}}
+          {{end}}
+          {{if .endDate}}
           <span class="endDate">
-            - {{MY endDate}}
+            - {{toMonthYear .endDate}}
           </span>
           {{else}}
           <span class="endDate">
             - Current
           </span>
-          {{/if}}
+          {{end}}
         </div>
         <div class="header-left">
-          {{#if position}}
+          {{if .position}}
           <div class="position">
-            {{position}}
+            {{.position}}
           </div>
-          {{/if}}
+          {{end}}
           <div class="organization">
-            {{organization}}
+            {{.organization}}
           </div>
         </div>
        
       </header>
-      {{/if}}
-      {{#if website}}
+      {{end}}
+      {{if .website}}
       <div class="website">
         <span class="fas fa-external-link-alt"></span>
-        <a target="_blank" href="{{website}}">{{website}}</a>
+        <a target="_blank" href="{{.website}}">{{.website}}</a>
       </div>
-      {{/if}}
-      {{#location}}
+      {{end}}
+      {{if .location}}
       <span class="location">
         <span class="fas fa-map-marker-alt"></span>
-        {{#if city}}
+        {{if .location.city}}
         <span class="city">
-          {{city}},
+          {{.location.city}},
         </span>
-        {{/if}}
-        {{#if countryCode}}
+        {{end}}
+        {{if .location.countryCode}}
         <span class="countryCode">
-          ({{countryCode}})
+          ({{.location.countryCode}})
         </span>
-        {{/if}}
-        {{#if region}}
+        {{end}}
+        {{if .location.region}}
         <span class="region">
-          {{region}}
+          {{.location.region}}
         </span>
-        {{/if}}
+        {{end}}
       </span>
-      {{/location}}
-      {{#if keywords.length}}
+        {{end}}
+      {{if .keywords}}
       <ul class="keywords">
-        {{#each keywords}}
+        {{range .keywords}}
         <li>{{.}}</li>
-        {{/each}}
+        {{end}}
       </ul>
-      {{/if}}
+      {{end}}
       <div class="item">
-        {{#if summary}}
-        <div class="summary">{{paragraphSplit summary}}</div>
-        {{/if}}
-        {{#if highlights.length}}
+        {{if .summary}}
+        <div class="summary">{{paragraphSplit .summary}}</div>
+        {{end}}
+        {{if (len .highlights)}}
         <ul class="highlights">
-          {{#each highlights}}
+          {{range .highlights}}
           <li>{{paragraphSplit .}}</li>
-          {{/each}}
+          {{end}}
         </ul>
-        {{/if}}
+        {{end}}
       </div>
     </section>
-    {{/each}}
+    {{end}}
   </section>
 </section>
-{{/if}}
+{{end}}

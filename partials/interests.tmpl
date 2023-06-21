@@ -1,0 +1,28 @@
+{{if .}}
+<section class="section">
+  <header>
+    <h2 class='section-title' class='section-title'>Interests</h2>
+  </header>
+  <section id="interests">
+    {{range .}}
+    <div class="item">
+      {{if .name}}
+      <h3 class="name">
+        {{.name}}
+      </h3>
+      {{end}}
+      {{if .keywords}}
+      <ul class="keywords">
+        {{range .keywords}}
+        <li>{{.}}</li>
+        {{end}}
+      </ul>
+      {{end}}
+      {{if .summary}}
+        <div class="summary">{{paragraphSplit .summary}}</div>
+      {{end}}
+    </div>
+    {{end}}
+  </section>
+</section>
+{{end}}

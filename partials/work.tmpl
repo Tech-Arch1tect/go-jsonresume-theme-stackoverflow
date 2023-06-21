@@ -1,0 +1,66 @@
+{{if .}}
+<section class="section">
+  <header>
+    <h2 class='section-title'>Work Experience <span class="item-count">({{(len .)}})</span></h2>
+  </header>
+
+  <section id="work">
+    {{range .}}
+    <section class="work-item">
+      {{if .name}}
+
+        {{if .summary}}
+        <!-- todo come back and add index -->
+        <label for="work-item-1"></label>
+        {{end}}
+
+        <header class="clear">
+            <div class="date">
+                {{if .startDate}}
+                <span class="startDate">{{toMonthYear .startDate}}</span>
+                {{end}}
+                {{if .endDate}}
+                <span class="endDate">- {{toMonthYear .endDate}}</span>
+                {{else}}
+                <span class="endDate">- Current</span>
+                {{end}}
+            </div>
+            {{if .position}}
+            <div class="position">{{.position}}</div>
+            {{end}}
+            <div class="company">{{.name}}</div>
+        </header>
+      {{end}}
+
+      {{if .location}}
+      <span class="fas fa-map-marker-alt"></span>
+      <span class="location">{{.location}}</span>
+      {{end}}
+      {{if .url}}
+      <span class="url">
+        <span class="fas fa-external-link-alt"></span>
+        <a target="_blank" href="{{.url}}">{{.url}}</a>
+      </span> {{end}} {{if .keywords}}
+      <ul class="keywords">
+        {{range .keywords}}
+        <li>{{.}}</li>
+        {{end}}
+      </ul>
+      {{end}}
+      <div class="item" id="work-item">
+        {{if .summary}}
+        <div class="summary">{{paragraphSplit .summary}}</div>
+        {{end}}
+        {{if (len .highlights)}}
+        <ul class="highlights">
+          {{range .highlights}}
+          <li>{{paragraphSplit .}}</li>
+          {{end}}
+        </ul>
+        {{end}}
+      </div>
+    </section>
+    {{end}}
+  </section>
+</section>
+{{end}}

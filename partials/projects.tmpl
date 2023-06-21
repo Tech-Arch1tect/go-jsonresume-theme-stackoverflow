@@ -1,0 +1,75 @@
+{{if .}}
+<section class="section">
+  <header>
+    <h2 class='section-title'>Projects <span class="item-count">({{(len .)}})</span></h2>
+  </header>
+  <section id="projects">
+    {{range .}}
+    <section class="project-item">
+      {{if .summary}}
+        <!-- todo index -->
+        <label for="project-item-1"></label>
+      {{end}}
+
+      {{if .name}}
+      <header class="clear">
+        {{if .name}}
+        <div class="position">{{.name}}</div>
+        {{end}}
+        {{if .startDate}}
+        <div class="date">
+          <span class="startDate">{{toMonthYear .startDate}}</span>
+          {{if .endDate}}
+          <span class="endDate">- {{toMonthYear .endDate}}</span>
+          {{else}}
+          <span class="endDate">- Current</span>
+          {{end}}
+        </div>
+        {{end}}
+      </header>
+      {{end}}
+
+      <span class="location">
+      <span class="fas fa-map-marker-alt"></span>
+      {{if .location.city}}
+      <span class="city">{{.location.city}},</span>
+      {{end}}
+      {{if .location.countryCode}}
+      <span class="countryCode">({{.location.countryCode}})</span>
+      {{end}}
+      {{if .location.region}}
+      <span class="region">
+      {{.location.region}}
+      </span>
+      {{end}}
+      </span>
+      {{if .url}}
+      <span class="website">
+        <span class="fas fa-external-link-alt"></span>
+        <a target="_blank" href="{{.url}}">{{.url}}</a>
+      </span>
+      {{end}}
+      {{if (len .keywords)}}
+      <ul class="keywords">
+        {{range .keywords}}
+          <li>{{.}}</li>
+        {{end}}
+      </ul>
+      {{end}}
+      <div class="item">
+        {{if .summary}}
+          <div class="summary">{{paragraphSplit .summary}}</div>
+        {{end}}
+        {{if (len .highlights)}}
+        <ul class="highlights">
+          {{range .highlights}}
+            <li>{{paragraphSplit .}}</li>
+          {{end}}
+        </ul>
+        {{end}}
+      </div>
+    </section>
+    {{end}}
+  </section>
+</section>
+{{end}}
